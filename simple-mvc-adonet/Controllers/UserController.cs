@@ -1,20 +1,30 @@
-﻿using DataObject.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using DataObject.DTO;
+using DataObject.ViewModel;
+using Services.User;
 using System.Web.Mvc;
 
 namespace simple_mvc_adonet.Controllers
 {
     public class UserController : Controller
     {
+        private readonly IUserServices userServices;
+
+        public UserController(IUserServices userServices)
+        {
+            this.userServices = userServices;
+        }
+
         // GET: User
         public ActionResult List()
         {
-            return View();
-        }
+            UserIndexModel model = new UserIndexModel()
+            {
+                ListUser = userServices.FindAll(),
+                User = new UserDTO()
+            };
 
+            return View(model);
+        }
 
         // GET: User
         public ActionResult CreateView()

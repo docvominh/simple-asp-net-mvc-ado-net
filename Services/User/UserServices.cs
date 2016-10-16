@@ -1,8 +1,8 @@
 ﻿using DataObject.DTO;
 using DataObject.ViewModel;
-using System.Collections.Generic;
-using System;
 using Infrastructure.Repositories;
+using System;
+using System.Collections.Generic;
 
 namespace Services.User
 {
@@ -19,12 +19,21 @@ namespace Services.User
 
         public UserServices(IUserRepository repositoty)
         {
-            this.userRepositoty =  repositoty;
+            this.userRepositoty = repositoty;
         }
 
         public List<UserDTO> FindAll()
         {
-            throw new NotImplementedException();
+            List<UserDTO> list = null;
+
+            list = userRepositoty.FindAll();
+
+            if (list == null)
+            {
+                list = new List<UserDTO>();
+            }
+
+            return list;
         }
 
         public List<UserDTO> FindAll(SearchUserConditionModel condition)

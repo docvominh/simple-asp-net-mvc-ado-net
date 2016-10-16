@@ -1,7 +1,40 @@
-﻿
-@{
-    ViewBag.Title = "List";
-}
+﻿@using DataObject.ViewModel;
+  
+@model UserIndexModel
 
-<h2>List</h2>
+    @{
+        ViewBag.Title = "List";
+    }
 
+    <h2>List</h2>
+
+    <table class="table">
+        <colgroup></colgroup>
+        <thead>
+            <tr>
+                <th>User Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Last login</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var user in Model.ListUser)
+            {
+                <tr>
+                    <td>@user.UserId</td>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>@user.LastLogin</td>
+                    <td>@user.Active</td>
+                    <td><button class="btn btn-danger">FUCK</button></td>
+                </tr>
+
+            }
+
+            
+        </tbody>
+    </table>
